@@ -1,0 +1,112 @@
+
+   PASS  Tests\Unit\BookTest
+  ✓ book belongs to author                23.49s  
+  ✓ book belongs to category               0.07s  
+  ✓ book available copies decrement        0.07s  
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true                      0.36s  
+
+   FAIL  Tests\Unit\LoanTest
+  ⨯ loan belongs to user                   2.20s  
+  ⨯ loan belongs to book                   0.10s  
+  ⨯ loan defaults to borrowed status       0.08s  
+
+   FAIL  Tests\Unit\UserTest
+  ⨯ user has many loans                    0.11s  
+  - user has many reservations → Reservat… 0.33s  
+  ✓ user is active by default              0.08s  
+
+   PASS  Tests\Feature\AuthTest
+  ✓ user can register                      5.12s  
+  ✓ user can login                         0.05s  
+  ✓ user can logout                        0.80s  
+
+   PASS  Tests\Feature\BookTest
+  ✓ public can list books                  0.32s  
+  ✓ librarian can create book              0.42s  
+  ✓ member cannot create book              0.06s  
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ the application returns a successful…  2.37s  
+
+   PASS  Tests\Feature\LoanTest
+  ✓ member can borrow book                 0.28s  
+  ✓ member cannot borrow unavailable book  0.27s  
+  ✓ librarian can return book              0.21s  
+  ──────────────────────────────────────────────  
+   FAILED  Tests\Unit\LoanTest…  QueryException   
+  SQLSTATE[HY000]: General error: 1364 Field 'book_id' doesn't have a default value (Connection: mysql, SQL: insert into `loans` (`borrowed_at`, `due_date`, `returned_at`, `status`, `user_id`, `updated_at`, `created_at`) values (2025-11-13 23:10:47, 2025-11-27 23:10:47, ?, returned, 1, 2025-12-03 08:33:05, 2025-12-03 08:33:05))
+
+  at vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53
+     49▕             $this->bindValues($statement, $this->prepareBindings($bindings));
+     50▕ 
+     51▕             $this->recordsHaveBeenModified();
+     52▕ 
+  ➜  53▕             $result = $statement->execute();
+     54▕ 
+     55▕             $this->lastInsertId = $this->getPdo()->lastInsertId($sequence);
+     56▕ 
+     57▕             return $result;
+
+  1   vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ──────────────────────────────────────────────  
+   FAILED  Tests\Unit\LoanTest…  QueryException   
+  SQLSTATE[HY000]: General error: 1364 Field 'user_id' doesn't have a default value (Connection: mysql, SQL: insert into `loans` (`borrowed_at`, `due_date`, `returned_at`, `status`, `book_id`, `updated_at`, `created_at`) values (2025-11-22 13:52:24, 2025-12-06 13:52:24, 2025-11-26 00:45:15, borrowed, 4, 2025-12-03 08:33:07, 2025-12-03 08:33:07))
+
+  at vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53
+     49▕             $this->bindValues($statement, $this->prepareBindings($bindings));
+     50▕ 
+     51▕             $this->recordsHaveBeenModified();
+     52▕ 
+  ➜  53▕             $result = $statement->execute();
+     54▕ 
+     55▕             $this->lastInsertId = $this->getPdo()->lastInsertId($sequence);
+     56▕ 
+     57▕             return $result;
+
+  1   vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ──────────────────────────────────────────────  
+   FAILED  Tests\Unit\LoanTest…  QueryException   
+  SQLSTATE[HY000]: General error: 1364 Field 'user_id' doesn't have a default value (Connection: mysql, SQL: insert into `loans` (`borrowed_at`, `due_date`, `returned_at`, `status`, `updated_at`, `created_at`) values (2025-11-16 05:02:03, 2025-11-30 05:02:03, ?, borrowed, 2025-12-03 08:33:07, 2025-12-03 08:33:07))
+
+  at vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53
+     49▕             $this->bindValues($statement, $this->prepareBindings($bindings));
+     50▕ 
+     51▕             $this->recordsHaveBeenModified();
+     52▕ 
+  ➜  53▕             $result = $statement->execute();
+     54▕ 
+     55▕             $this->lastInsertId = $this->getPdo()->lastInsertId($sequence);
+     56▕ 
+     57▕             return $result;
+
+  1   vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ──────────────────────────────────────────────  
+   FAILED  Tests\Unit\UserTest…  QueryException   
+  SQLSTATE[HY000]: General error: 1364 Field 'book_id' doesn't have a default value (Connection: mysql, SQL: insert into `loans` (`borrowed_at`, `due_date`, `returned_at`, `status`, `user_id`, `updated_at`, `created_at`) values (2025-11-06 05:52:07, 2025-11-20 05:52:07, 2025-11-19 02:24:51, overdue, 2, 2025-12-03 08:33:07, 2025-12-03 08:33:07))
+
+  at vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53
+     49▕             $this->bindValues($statement, $this->prepareBindings($bindings));
+     50▕ 
+     51▕             $this->recordsHaveBeenModified();
+     52▕ 
+  ➜  53▕             $result = $statement->execute();
+     54▕ 
+     55▕             $this->lastInsertId = $this->getPdo()->lastInsertId($sequence);
+     56▕ 
+     57▕             return $result;
+
+  1   vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:53
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+
+  Tests:    4 failed, 1 skipped, 15 passed (34 assertions)
+  Duration: 62.88s
+

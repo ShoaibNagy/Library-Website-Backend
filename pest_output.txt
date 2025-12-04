@@ -1,0 +1,212 @@
+
+   PASS  Tests\Unit\ExampleTest
+  Γ£ô that true is true                      0.03s  
+
+   PASS  Tests\Feature\AuthTest
+  Γ£ô user can register                      0.88s  
+  Γ£ô user can login                         0.09s  
+  Γ£ô user can logout                        0.06s  
+
+   FAIL  Tests\Feature\BookTest
+  Γ¿» public can list books                  0.08s  
+  Γ¿» librarian can create book              0.05s  
+  Γ£ô member cannot create book              0.04s  
+
+   PASS  Tests\Feature\ExampleTest
+  Γ£ô the application returns a successfulΓÇª  0.07s  
+
+   FAIL  Tests\Feature\LoanTest
+  Γ¿» member can borrow book                 0.04s  
+  Γ¿» member cannot borrow unavailable book  0.03s  
+  Γ¿» librarian can return book              0.03s  
+
+   FAIL  Tests\Feature\LoansAuthTest
+  Γ¿» checkout requires authentication       0.04s  
+  Γ¿» patron can checkout available copy anΓÇª 0.03s  
+  Γ¿» cannot checkout an already borrowed cΓÇª 0.03s  
+  Γ¿» return updates loan and copy status    0.03s  
+  Γ¿» renew enforces max loan length         0.03s  
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\BookTΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table authors has no column named birth_year (Connection: sqlite, SQL: insert into "authors" ("name", "bio", "birth_year", "updated_at", "created_at") values (Prof. Kassandra Simonis V, Quibusdam rerum ipsa qui illum et quia sunt. Ratione sit nam numquam optio est perspiciatis iste exercitationem. Est aut quod pariatur in., 1991, 2025-12-02 19:40:10, 2025-12-02 19:40:10))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\BookTΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table authors has no column named birth_year (Connection: sqlite, SQL: insert into "authors" ("name", "bio", "birth_year", "updated_at", "created_at") values (Nathen Gorczany, In id suscipit laboriosam asperiores enim voluptatem. Ut facilis excepturi est voluptas aut inventore dolorem. Id aliquid doloremque quos non ipsam quia., 1986, 2025-12-02 19:40:10, 2025-12-02 19:40:10))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\LoanTΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table authors has no column named birth_year (Connection: sqlite, SQL: insert into "authors" ("name", "bio", "birth_year", "updated_at", "created_at") values (Prof. Cassandre Jacobs III, Voluptas recusandae quam fuga aliquid ipsum commodi quod. Nulla fugiat consectetur autem minus sit aut nam., 1979, 2025-12-02 19:40:10, 2025-12-02 19:40:10))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\LoanTΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table authors has no column named birth_year (Connection: sqlite, SQL: insert into "authors" ("name", "bio", "birth_year", "updated_at", "created_at") values (Gwendolyn Boyle II, Hic sint et consequatur dicta accusamus. Quae esse tempore voluptatem praesentium. Qui voluptatem eligendi eos rerum fugiat sit tempore., 2012, 2025-12-02 19:40:10, 2025-12-02 19:40:10))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\LoanTΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table authors has no column named birth_year (Connection: sqlite, SQL: insert into "authors" ("name", "bio", "birth_year", "updated_at", "created_at") values (Frances Pagac, Perspiciatis explicabo impedit et dolorem eveniet quod. Ut ullam aperiam voluptate officia tenetur et voluptas quibusdam. Fugit quae et in qui eum mollitia impedit., 1978, 2025-12-02 19:40:10, 2025-12-02 19:40:10))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\LoansΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table authors has no column named birth_year (Connection: sqlite, SQL: insert into "authors" ("name", "bio", "birth_year", "updated_at", "created_at") values (Mrs. Sandrine Hirthe V, Atque consequatur possimus necessitatibus delectus illo incidunt voluptatibus labore. Impedit non repellat aut non voluptatem et. Eius ut quia in aut maxime et., 2014, 2025-12-02 19:40:10, 2025-12-02 19:40:10))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\LoansΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table users has no column named api_token (Connection: sqlite, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "role", "status", "api_token", "updated_at", "created_at") values (Verdie McDermott V, icrona@example.net, 2025-12-02 19:40:10, $2y$04$1bICbgmy5TVsR9nXpJNsJuRAt0xLvsX4oQMnnygw95pO0eGeJOspK, WtPqnOP1HG, patron, active, test-token, 2025-12-02 19:40:10, 2025-12-02 19:40:10))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\LoansΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table users has no column named api_token (Connection: sqlite, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "role", "status", "api_token", "updated_at", "created_at") values (Kaelyn Gutmann, johnson.stevie@example.com, 2025-12-02 19:40:10, $2y$04$1bICbgmy5TVsR9nXpJNsJuRAt0xLvsX4oQMnnygw95pO0eGeJOspK, YrIHMZO788, patron, active, token-1, 2025-12-02 19:40:10, 2025-12-02 19:40:10))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\LoansΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table users has no column named api_token (Connection: sqlite, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "role", "status", "api_token", "updated_at", "created_at") values (Sigurd Spencer, cornelius.daugherty@example.com, 2025-12-02 19:40:11, $2y$04$1bICbgmy5TVsR9nXpJNsJuRAt0xLvsX4oQMnnygw95pO0eGeJOspK, QLYBhN4LNv, patron, active, return-token, 2025-12-02 19:40:11, 2025-12-02 19:40:11))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\LoansΓÇª  QueryException   
+  SQLSTATE[HY000]: General error: 1 table users has no column named api_token (Connection: sqlite, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "role", "status", "api_token", "updated_at", "created_at") values (Isac Orn, leila64@example.com, 2025-12-02 19:40:11, $2y$04$1bICbgmy5TVsR9nXpJNsJuRAt0xLvsX4oQMnnygw95pO0eGeJOspK, cmoxKaV7o6, patron, active, renew-token, 2025-12-02 19:40:11, 2025-12-02 19:40:11))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+    560Γûò             if ($this->pretending()) {
+    561Γûò                 return true;
+    562Γûò             }
+    563Γûò 
+  Γ₧£ 564Γûò             $statement = $this->getPdo()->prepare($query);
+    565Γûò 
+    566Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    567Γûò 
+    568Γûò             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:564
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+
+  Tests:    10 failed, 6 passed (17 assertions)
+  Duration: 1.87s
+

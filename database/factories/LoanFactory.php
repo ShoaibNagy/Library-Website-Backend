@@ -12,10 +12,12 @@ class LoanFactory extends Factory
         $dueDate = (clone $checkoutDate)->modify('+14 days');
 
         return [
-            'checkout_date' => $checkoutDate,
+            'user_id' => \App\Models\User::factory(),
+            'book_id' => \App\Models\Book::factory(),
+            'borrowed_at' => $checkoutDate,
             'due_date' => $dueDate,
-            'return_date' => $this->faker->optional(0.7)->dateTimeBetween($checkoutDate, 'now'),
-            'status' => $this->faker->randomElement(['active', 'returned', 'overdue']),
+            'returned_at' => $this->faker->optional(0.7)->dateTimeBetween($checkoutDate, 'now'),
+            'status' => $this->faker->randomElement(['borrowed', 'returned', 'overdue']),
         ];
     }
 }

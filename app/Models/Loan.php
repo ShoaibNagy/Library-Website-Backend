@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Database\Factories\LoanFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,17 +11,18 @@ class Loan extends Model
 
     protected $fillable = [
         'user_id',
-        'copy_id',
-        'checkout_date',
+        'book_id',
+        'borrowed_at',
         'due_date',
-        'return_date',
+        'returned_at',
+        'fine_amount',
         'status',
     ];
 
     protected $casts = [
-        'checkout_date' => 'datetime',
+        'borrowed_at' => 'datetime',
         'due_date' => 'datetime',
-        'return_date' => 'datetime',
+        'returned_at' => 'datetime',
     ];
 
     public function user()
@@ -30,18 +30,19 @@ class Loan extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function copy()
+    public function book()
     {
-        return $this->belongsTo(Copy::class);
+        return $this->belongsTo(Book::class);
     }
 
-    public function isOverdue()
+    public function scopeOverdue($query)
     {
-        return $this->status === 'active' && now()->isAfter($this->due_date);
+        return $query->where('due_date', '<', now())
+                     ->where('status', 'borrowed');
     }
 
-    protected static function newFactory()
+    public function scopeCurrent($query)
     {
-        return LoanFactory::new();
+        return $query->where('status', 'borrowed');
     }
 }

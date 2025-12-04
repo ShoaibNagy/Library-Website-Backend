@@ -1,0 +1,112 @@
+
+   PASS  Tests\Unit\BookTest
+  ✓ book belongs to author                 3.11s  
+  ✓ book belongs to category               0.08s  
+  ✓ book available copies decrement        0.05s  
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true                      0.02s  
+
+   FAIL  Tests\Unit\LoanTest
+  ⨯ loan belongs to user                   0.10s  
+  ⨯ loan belongs to book                   0.04s  
+  ⨯ loan defaults to borrowed status       0.07s  
+
+   FAIL  Tests\Unit\UserTest
+  ⨯ user has many loans                    0.06s  
+  - user has many reservations → Reservat… 0.06s  
+  ✓ user is active by default              0.09s  
+
+   PASS  Tests\Feature\AuthTest
+  ✓ user can register                      0.24s  
+  ✓ user can login                         0.08s  
+  ✓ user can logout                        0.07s  
+
+   PASS  Tests\Feature\BookTest
+  ✓ public can list books                  0.10s  
+  ✓ librarian can create book              0.09s  
+  ✓ member cannot create book              0.07s  
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ the application returns a successful…  0.09s  
+
+   PASS  Tests\Feature\LoanTest
+  ✓ member can borrow book                 0.09s  
+  ✓ member cannot borrow unavailable book  0.07s  
+  ✓ librarian can return book              0.09s  
+  ──────────────────────────────────────────────  
+   FAILED  Tests\Unit\LoanTest…  QueryException   
+  SQLSTATE[42S22]: Column not found: 1054 Unknown column 'checkout_date' in 'field list' (Connection: mysql, SQL: insert into `loans` (`checkout_date`, `due_date`, `return_date`, `status`, `user_id`, `updated_at`, `created_at`) values (2025-11-06 18:27:57, 2025-11-20 18:27:57, 2025-11-08 09:23:07, active, 1, 2025-12-03 08:29:16, 2025-12-03 08:29:16))
+
+  at vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47
+     43▕             if ($this->pretending()) {
+     44▕                 return true;
+     45▕             }
+     46▕ 
+  ➜  47▕             $statement = $this->getPdo()->prepare($query);
+     48▕ 
+     49▕             $this->bindValues($statement, $this->prepareBindings($bindings));
+     50▕ 
+     51▕             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ──────────────────────────────────────────────  
+   FAILED  Tests\Unit\LoanTest…  QueryException   
+  SQLSTATE[42S22]: Column not found: 1054 Unknown column 'checkout_date' in 'field list' (Connection: mysql, SQL: insert into `loans` (`checkout_date`, `due_date`, `return_date`, `status`, `book_id`, `updated_at`, `created_at`) values (2025-11-08 11:55:56, 2025-11-22 11:55:56, 2025-11-16 18:37:15, returned, 4, 2025-12-03 08:29:16, 2025-12-03 08:29:16))
+
+  at vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47
+     43▕             if ($this->pretending()) {
+     44▕                 return true;
+     45▕             }
+     46▕ 
+  ➜  47▕             $statement = $this->getPdo()->prepare($query);
+     48▕ 
+     49▕             $this->bindValues($statement, $this->prepareBindings($bindings));
+     50▕ 
+     51▕             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ──────────────────────────────────────────────  
+   FAILED  Tests\Unit\LoanTest…  QueryException   
+  SQLSTATE[42S22]: Column not found: 1054 Unknown column 'checkout_date' in 'field list' (Connection: mysql, SQL: insert into `loans` (`checkout_date`, `due_date`, `return_date`, `status`, `updated_at`, `created_at`) values (2025-11-11 06:47:47, 2025-11-25 06:47:47, 2025-11-25 18:54:44, returned, 2025-12-03 08:29:16, 2025-12-03 08:29:16))
+
+  at vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47
+     43▕             if ($this->pretending()) {
+     44▕                 return true;
+     45▕             }
+     46▕ 
+  ➜  47▕             $statement = $this->getPdo()->prepare($query);
+     48▕ 
+     49▕             $this->bindValues($statement, $this->prepareBindings($bindings));
+     50▕ 
+     51▕             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+  ──────────────────────────────────────────────  
+   FAILED  Tests\Unit\UserTest…  QueryException   
+  SQLSTATE[42S22]: Column not found: 1054 Unknown column 'checkout_date' in 'field list' (Connection: mysql, SQL: insert into `loans` (`checkout_date`, `due_date`, `return_date`, `status`, `user_id`, `updated_at`, `created_at`) values (2025-11-14 05:16:52, 2025-11-28 05:16:52, 2025-11-27 03:56:53, returned, 2, 2025-12-03 08:29:16, 2025-12-03 08:29:16))
+
+  at vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47
+     43▕             if ($this->pretending()) {
+     44▕                 return true;
+     45▕             }
+     46▕ 
+  ➜  47▕             $statement = $this->getPdo()->prepare($query);
+     48▕ 
+     49▕             $this->bindValues($statement, $this->prepareBindings($bindings));
+     50▕ 
+     51▕             $this->recordsHaveBeenModified();
+
+  1   vendor\laravel\framework\src\Illuminate\Database\MySqlConnection.php:47
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:811
+
+
+  Tests:    4 failed, 1 skipped, 15 passed (34 assertions)
+  Duration: 5.55s
+

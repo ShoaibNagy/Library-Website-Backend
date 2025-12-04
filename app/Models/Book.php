@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Database\Factories\BookFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,23 +12,38 @@ class Book extends Model
     protected $fillable = [
         'title',
         'isbn',
-        'description',
+        'publisher',
         'publication_year',
-        'authors',
+        'description',
+        'cover_image',
+        'total_copies',
+        'available_copies',
+        'author_id',
+        'category_id',
     ];
 
-    protected $casts = [
-        'publication_year' => 'integer',
-        'authors' => 'array',
-    ];
-
-    public function editions()
+    public function author()
     {
-        return $this->hasMany(Edition::class);
+        return $this->belongsTo(Author::class);
     }
 
-    protected static function newFactory()
+    public function category()
     {
-        return BookFactory::new();
+        return $this->belongsTo(Category::class);
+    }
+
+    public function loans()
+    {
+        return $this->hasMany(Loan::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function scopeAvailable($query)
+    {
+        return $query->where('available_copies', '>', 0);
     }
 }

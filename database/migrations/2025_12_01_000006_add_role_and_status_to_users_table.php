@@ -9,15 +9,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('patron')->after('password');
-            $table->string('api_token', 80)->nullable()->unique()->after('role');
+            $table->string('role')->default('member')->after('password'); // admin, librarian, member
+            $table->string('status')->default('active')->after('role'); // active, suspended
         });
     }
 
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['role', 'api_token']);
+            $table->dropColumn(['role', 'status']);
         });
     }
 };

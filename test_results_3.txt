@@ -1,0 +1,40 @@
+
+   PASS  Tests\Unit\BookTest
+  ✓ book belongs to author                 3.19s  
+  ✓ book belongs to category               0.05s  
+  ✓ book available copies decrement        0.06s  
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true                      0.02s  
+
+   PASS  Tests\Unit\LoanTest
+  ✓ loan belongs to user                   0.11s  
+  ✓ loan belongs to book                   0.06s  
+  ✓ loan defaults to borrowed status       0.10s  
+
+   WARN  Tests\Unit\UserTest
+  ✓ user has many loans                    0.17s  
+  - user has many reservations → Reservat… 0.12s  
+  ✓ user is active by default              0.10s  
+
+   PASS  Tests\Feature\AuthTest
+  ✓ user can register                      0.35s  
+  ✓ user can login                         0.10s  
+  ✓ user can logout                        0.14s  
+
+   PASS  Tests\Feature\BookTest
+  ✓ public can list books                  0.16s  
+  ✓ librarian can create book              0.16s  
+  ✓ member cannot create book              0.13s  
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ the application returns a successful…  0.19s  
+
+   PASS  Tests\Feature\LoanTest
+  ✓ member can borrow book                 0.13s  
+  ✓ member cannot borrow unavailable book  0.15s  
+  ✓ librarian can return book              0.12s  
+
+  Tests:    1 skipped, 19 passed (41 assertions)
+  Duration: 6.14s
+

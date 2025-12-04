@@ -1,0 +1,261 @@
+name: 'Loan Operations'
+description: |-
+
+  APIs for managing book loans
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/loans/overdue
+    metadata:
+      custom: []
+      groupName: 'Loan Operations'
+      groupDescription: |-
+
+        APIs for managing book loans
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List overdue loans'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+           "current_page": 1,
+           "data": [
+               {
+                   "id": 1,
+                   "user_id": 1,
+                   "book_id": 1,
+                   "borrowed_at": "2023-01-01T00:00:00.000000Z",
+                   "due_date": "2022-01-01T00:00:00.000000Z",
+                   "status": "borrowed",
+                   "user": {
+                       "id": 1,
+                       "name": "John Doe"
+                   },
+                   "book": {
+                       "id": 1,
+                       "title": "Harry Potter"
+                   }
+               }
+           ],
+           "total": 1
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/loans/{id}/return'
+    metadata:
+      custom: []
+      groupName: 'Loan Operations'
+      groupDescription: |-
+
+        APIs for managing book loans
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Return a book'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the loan.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+           "id": 1,
+           "user_id": 1,
+           "book_id": 1,
+           "borrowed_at": "2023-01-01T00:00:00.000000Z",
+           "due_date": "2023-01-15T00:00:00.000000Z",
+           "returned_at": "2023-01-10T00:00:00.000000Z",
+           "status": "returned",
+           "fine_amount": 0,
+           "created_at": "2023-01-01T00:00:00.000000Z",
+           "updated_at": "2023-01-10T00:00:00.000000Z"
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/loans/borrow
+    metadata:
+      custom: []
+      groupName: 'Loan Operations'
+      groupDescription: |-
+
+        APIs for managing book loans
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Borrow a book'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      book_id:
+        custom: []
+        name: book_id
+        description: 'The ID of the book to borrow.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      book_id: 1
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: |-
+          {
+           "id": 1,
+           "user_id": 1,
+           "book_id": 1,
+           "borrowed_at": "2023-01-01T00:00:00.000000Z",
+           "due_date": "2023-01-15T00:00:00.000000Z",
+           "status": "borrowed",
+           "created_at": "2023-01-01T00:00:00.000000Z",
+           "updated_at": "2023-01-01T00:00:00.000000Z"
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: |-
+          {
+           "message": "The given data was invalid.",
+           "errors": {
+               "book_id": [
+                   "This book is currently unavailable."
+               ]
+           }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/loans/my-history
+    metadata:
+      custom: []
+      groupName: 'Loan Operations'
+      groupDescription: |-
+
+        APIs for managing book loans
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get my loan history'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+           "current_page": 1,
+           "data": [
+               {
+                   "id": 1,
+                   "user_id": 1,
+                   "book_id": 1,
+                   "borrowed_at": "2023-01-01T00:00:00.000000Z",
+                   "due_date": "2023-01-15T00:00:00.000000Z",
+                   "status": "borrowed",
+                   "book": {
+                       "id": 1,
+                       "title": "Harry Potter"
+                   }
+               }
+           ],
+           "total": 1
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null

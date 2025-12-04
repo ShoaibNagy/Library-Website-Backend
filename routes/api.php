@@ -1,21 +1,55 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\LoanController;
 
-Route::prefix('v1')->group(function () {
-    Route::get('catalog', [App\Http\Controllers\Api\CatalogController::class, 'index']);
-    Route::get('books/{id}', [App\Http\Controllers\Api\CatalogController::class, 'show']);
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+*/
 
-    // Protected loan routes: require API token and appropriate role
-    Route::post('loans/checkout', [App\Http\Controllers\Api\LoansController::class, 'checkout'])
-        ->middleware([\App\Http\Middleware\ApiTokenAuth::class, \App\Http\Middleware\EnsureRole::class . ':patron']);
+// Public Routes
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
+Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+Route::get('/reset-password/{token}', function ($token) {
+    return response()->json(['token' => $token]);
+})->name('password.reset');
 
-    Route::post('loans/{id}/return', [App\Http\Controllers\Api\LoansController::class, 'return'])
-        ->middleware([\App\Http\Middleware\ApiTokenAuth::class, \App\Http\Middleware\EnsureRole::class . ':patron']);
+// Protected Routes
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 
-    Route::post('loans/{id}/renew', [App\Http\Controllers\Api\LoansController::class, 'renew'])
-        ->middleware([\App\Http\Middleware\ApiTokenAuth::class, \App\Http\Middleware\EnsureRole::class . ':patron']);
+    // Admin Only Routes
+    Route::middleware('is_admin')->group(function () {
+        // User management routes can go here
+    });
 
-    Route::get('users/{user_id}/loans', [App\Http\Controllers\Api\LoansController::class, 'userLoans'])
-        ->middleware([\App\Http\Middleware\ApiTokenAuth::class, \App\Http\Middleware\EnsureRole::class . ':patron']);
+    // Librarian & Admin Routes
+    Route::middleware('is_librarian')->group(function () {
+        // Book Management
+        Route::post('/books', [BookController::class, 'store']);
+        Route::put('/books/{id}', [BookController::class, 'update']);
+        Route::delete('/books/{id}', [BookController::class, 'destroy']);
+        
+        // Loan Management (Overdue & Return)
+        Route::get('/loans/overdue', [LoanController::class, 'overdue']);
+        Route::post('/loans/{id}/return', [LoanController::class, 'returnBook']);
+    });
+
+    // Authenticated User Routes
+    Route::post('/loans/borrow', [LoanController::class, 'borrow']);
+    Route::get('/loans/my-history', [LoanController::class, 'myHistory']);
 });
+
+// Public Book Routes
+Route::get('/books', [BookController::class, 'index']);
+Route::get('/books/{id}', [BookController::class, 'show']);

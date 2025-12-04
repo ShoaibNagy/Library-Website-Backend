@@ -11,14 +11,13 @@ return new class extends Migration
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('copy_id')->constrained()->onDelete('cascade');
-            $table->dateTime('checkout_date');
+            $table->foreignId('book_id')->constrained()->onDelete('cascade');
+            $table->dateTime('borrowed_at');
             $table->dateTime('due_date');
-            $table->dateTime('return_date')->nullable();
-            $table->string('status')->default('active');
+            $table->dateTime('returned_at')->nullable();
+            $table->decimal('fine_amount', 8, 2)->default(0);
+            $table->string('status')->default('borrowed'); // borrowed, returned, overdue
             $table->timestamps();
-            $table->index(['user_id', 'status']);
-            $table->index(['copy_id', 'status']);
         });
     }
 

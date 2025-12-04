@@ -1,0 +1,521 @@
+name: 'Book Management'
+description: |-
+
+  APIs for managing books
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/books
+    metadata:
+      custom: []
+      groupName: 'Book Management'
+      groupDescription: |-
+
+        APIs for managing books
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a new book'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        custom: []
+        name: title
+        description: 'The title of the book.'
+        required: true
+        example: 'Harry Potter'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      isbn:
+        custom: []
+        name: isbn
+        description: 'The ISBN of the book.'
+        required: true
+        example: '1234567890'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      author_id:
+        custom: []
+        name: author_id
+        description: 'The ID of the author.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      category_id:
+        custom: []
+        name: category_id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      total_copies:
+        custom: []
+        name: total_copies
+        description: 'The total number of copies.'
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      available_copies:
+        custom: []
+        name: available_copies
+        description: 'The number of available copies.'
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      publication_year:
+        custom: []
+        name: publication_year
+        description: 'The year of publication.'
+        required: false
+        example: 2000
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'The description of the book.'
+        required: false
+        example: 'A wizard boy...'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      title: 'Harry Potter'
+      isbn: '1234567890'
+      author_id: 1
+      category_id: 1
+      total_copies: 10
+      available_copies: 10
+      publication_year: 2000
+      description: 'A wizard boy...'
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: |-
+          {
+           "id": 1,
+           "title": "Harry Potter",
+           "isbn": "1234567890",
+           "author_id": 1,
+           "category_id": 1,
+           "total_copies": 10,
+           "available_copies": 10
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+    uri: 'api/books/{id}'
+    metadata:
+      custom: []
+      groupName: 'Book Management'
+      groupDescription: |-
+
+        APIs for managing books
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update a book'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the book.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        custom: []
+        name: title
+        description: 'The title of the book.'
+        required: false
+        example: 'Harry Potter'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      isbn:
+        custom: []
+        name: isbn
+        description: 'The ISBN of the book.'
+        required: false
+        example: '1234567890'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      author_id:
+        custom: []
+        name: author_id
+        description: 'The ID of the author.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      category_id:
+        custom: []
+        name: category_id
+        description: 'The ID of the category.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      total_copies:
+        custom: []
+        name: total_copies
+        description: 'The total number of copies.'
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      available_copies:
+        custom: []
+        name: available_copies
+        description: 'The number of available copies.'
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      publication_year:
+        custom: []
+        name: publication_year
+        description: 'The year of publication.'
+        required: false
+        example: 2000
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'The description of the book.'
+        required: false
+        example: 'A wizard boy...'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      title: 'Harry Potter'
+      isbn: '1234567890'
+      author_id: 1
+      category_id: 1
+      total_copies: 10
+      available_copies: 10
+      publication_year: 2000
+      description: 'A wizard boy...'
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+           "id": 1,
+           "title": "Harry Potter",
+           "isbn": "1234567890",
+           "author_id": 1,
+           "category_id": 1,
+           "total_copies": 10,
+           "available_copies": 10
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/books/{id}'
+    metadata:
+      custom: []
+      groupName: 'Book Management'
+      groupDescription: |-
+
+        APIs for managing books
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete a book'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the book.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+           "message": "Book deleted successfully"
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/books
+    metadata:
+      custom: []
+      groupName: 'Book Management'
+      groupDescription: |-
+
+        APIs for managing books
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List all books'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      search:
+        custom: []
+        name: search
+        description: 'Filter by title, isbn, or author name.'
+        required: false
+        example: 'Harry Potter'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      category_id:
+        custom: []
+        name: category_id
+        description: 'Filter by category ID.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      page:
+        custom: []
+        name: page
+        description: 'The page number.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      search: 'Harry Potter'
+      category_id: 1
+      page: 1
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+           "current_page": 1,
+           "data": [
+               {
+                   "id": 1,
+                   "title": "Harry Potter",
+                   "isbn": "1234567890",
+                   "author": {
+                       "id": 1,
+                       "name": "J.K. Rowling"
+                   },
+                   "category": {
+                       "id": 1,
+                       "name": "Fantasy"
+                   },
+                   "total_copies": 10,
+                   "available_copies": 5
+               }
+           ],
+           "total": 1
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/books/{id}'
+    metadata:
+      custom: []
+      groupName: 'Book Management'
+      groupDescription: |-
+
+        APIs for managing books
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get a specific book'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the book.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+           "id": 1,
+           "title": "Harry Potter",
+           "isbn": "1234567890",
+           "author": {
+               "id": 1,
+               "name": "J.K. Rowling"
+           },
+           "category": {
+               "id": 1,
+               "name": "Fantasy"
+           },
+           "total_copies": 10,
+           "available_copies": 5
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null

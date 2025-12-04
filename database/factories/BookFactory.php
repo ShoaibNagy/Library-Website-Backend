@@ -19,12 +19,12 @@ class BookFactory extends Factory
         return [
             'title' => $this->faker->sentence(3),
             'isbn' => $this->faker->isbn13(),
-            'description' => $this->faker->paragraphs(2, true),
+            'author_id' => \App\Models\Author::factory(),
+            'category_id' => \App\Models\Category::factory(),
+            'total_copies' => 5,
+            'available_copies' => 5,
             'publication_year' => $this->faker->year(),
-            'authors' => [
-                $this->faker->name(),
-                $this->faker->name(),
-            ],
+            'description' => $this->faker->paragraph(),
         ];
     }
 }
